@@ -20,7 +20,7 @@ public class NameCreator
     {
         var layerNames = new List<string>();
 
-        var objs = Resources.FindObjectsOfTypeAll<UnityEngine.Object>();
+        var objs = Resources.FindObjectsOfTypeAll<Object>();
         var sortingLayers = new List<string>();
         var inputNames = new List<string>();
         var navMeshLayers = new List<string>();
@@ -102,12 +102,12 @@ public class NameCreator
 
         builder = AppendClassText(builder, className, names);
 
-        string text = builder.ToString().Replace(",}", "}");
-        string assetPath = string.Format("{0}../{1}Name.cs", currentFolderPath, className);
+        var text = builder.ToString().Replace(",}", "}");
+        var assetPath = string.Format("{0}../{1}Name.cs", currentFolderPath, className);
 
         var monoImporter = AssetImporter.GetAtPath(assetPath.Replace("/Editor/..", "")) as MonoImporter;
 
-        bool needRebuild = false;
+        var needRebuild = false;
 
         if (monoImporter)
         {
@@ -116,7 +116,7 @@ public class NameCreator
             if (props.Length != names.Length)
                 needRebuild = true;
 
-            for (int i = 0; i < props.Length; i++)
+            for (var i = 0; i < props.Length; i++)
             {
                 if (props[i].Name != Replace(names[i]))
                 {
