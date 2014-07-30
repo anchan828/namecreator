@@ -27,6 +27,7 @@ public class NameCreator
 
         foreach (var obj in objs)
         {
+			Debug.Log(obj.name);
             switch (obj.name)
             {
                 case "InputManager":
@@ -160,7 +161,7 @@ public class NameCreator
 	/// <summary>
 	/// return ""{0}""
  	/// </summary>
-	public static string @{1} {{ get{{ return ""{0}""; }} }}", name, Replace(name)).AppendLine();
+	public const string @{1} = ""{0}"";", name, Replace(name)).AppendLine();
         }
     }
 
