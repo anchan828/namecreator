@@ -27,7 +27,6 @@ public class NameCreator
 
         foreach (var obj in objs)
         {
-			Debug.Log(obj.name);
             switch (obj.name)
             {
                 case "InputManager":
