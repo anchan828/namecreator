@@ -82,6 +82,10 @@ public class NameCreator
             Build("NavMeshLayer", navMeshLayers.ToArray());
             Build("Input", inputNames.ToArray());
             Build("Scene", EditorBuildSettings.scenes.Where(scene => scene.enabled).Select<EditorBuildSettingsScene, string>(scene => Path.GetFileNameWithoutExtension(scene.path)).ToArray());
+
+            foreach (var name in MyResources.GetPathToArray()) {
+                Build (name.className, MyResources.GetNameToArray (name.path));
+            }
         }
         AssetDatabase.StopAssetEditing();
         EditorUtility.UnloadUnusedAssets();
